@@ -1,0 +1,40 @@
+#!/bin/zsh
+
+# 检查 Node.js 是否已安装
+if command -v node >/dev/null 2>&1; then
+    echo "Node.js 已安装"
+else
+    # 安装 Homebrew
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+    # 安装 Node.js 和 npm
+    brew install node
+
+    # 更新 npm 到最新版本
+    npm install -g npm@latest
+
+    echo "Node.js 已安装"
+fi
+
+# 检查 nvm 是否已安装
+if command -v nvm >/dev/null 2>&1; then
+    echo "nvm 已安装"
+else
+    # 自动获取最新版本的 nvm
+    NVM_VERSION=$(curl -s https://api.github.com/repos/nvm-sh/nvm/releases/latest | grep 'tag_name' | cut -d '"' -f 4)
+
+    # 安装 nvm
+    curl -o- "https://raw.githubusercontent.com/nvm-sh/nvm/${NVM_VERSION}/install.sh" | bash
+
+    echo "nvm 已安装"
+fi
+
+# 使 nvm 可用
+source ~/.zshrc
+
+# 安装 Node.js 16
+nvm install 16
+
+# 验证 Node.js 和 npm 是否已正确安装
+node -v
+npm -v

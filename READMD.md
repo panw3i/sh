@@ -1,0 +1,2 @@
+- gost-start.sh       gost 启动命令
+- install-docker.sh   docker安装

@@ -1,2 +1,4 @@
-- gost-start.sh       gost 启动命令
-- install-docker.sh   docker安装
+- gost-start.sh gost 启动命令
+- install-docker.sh docker安装
+- WebStorm.sh 使用WebStorm打开文件
+- install-gost.sh gost安装
